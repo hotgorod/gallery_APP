@@ -1,0 +1,36 @@
+.authFormContainer, .loginForm{
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+h2{
+    color: #fff;
+}
+.authFormContainer{
+    padding: 50px;
+    margin: 5px;
+    max-width: 560px;
+    width: 100%;
+    border: solid 1px white;
+    border-radius: 10px;
+}
+label{
+text-align: left;
+/* padding: 5px 0; */
+}
+
+input{
+    margin: 10px 0;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+
+}
+button{
+    border: none;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
