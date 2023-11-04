@@ -1,9 +1,11 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense} from "react";
 import { Route, Routes } from "react-router-dom";
 import css from "./App.module.css";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import GalleryPage from "./pages/GalleryPage";
+import RestrictedRoute from "./RestrictedRoutes";
+import PrivatedRoute from "./PrivatRoutes";
 
 
 const appRouts = [
@@ -18,12 +20,19 @@ const appRouts = [
   // },
   {
     path: "/login",
-    element:    <LoginPage />,
+    element: (
+      <RestrictedRoute redirectTo="/gallery">
+        <LoginPage />
+      </RestrictedRoute>
+    ),
   },
   {
     path: "/gallery",
-    element:
-        <GalleryPage />,
+    element: (
+      <PrivatedRoute redirectTo="/login">
+        <GalleryPage />
+      </PrivatedRoute>
+    ),
   },
 ];
 

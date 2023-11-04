@@ -32,8 +32,8 @@ const authSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(loginThunk.pending, (state) => {
-        state.contacts.isLoading = true;
-        state.contacts.error = null;
+        state.isLoading = true;
+        state.error = null;
       })
       .addCase(loginThunk.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -42,8 +42,8 @@ const authSlice = createSlice({
         state.user = action.payload.user;
       })
       .addCase(loginThunk.rejected, (state, action) => {
-        state.contacts.isLoading = false;
-        state.contacts.error = action.payload;
+        state.isLoading = false;
+        state.error = action.payload;
       }),
 });
 
