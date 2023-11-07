@@ -13,4 +13,21 @@ export const requestLogin = async (FormData) => {
   setToken(data.token);
   return data;
 };
+export const requestRefreshUser = async () => {
+  const { data } = await galleryInstance.get("/auth/current");
+  
+  return data;
+};
 
+
+export const requestGalleryList = async () => {
+    const { data } = await galleryInstance.get("/photoshoots");
+    
+  return data;
+}; 
+
+export const requestAddGalleryItem = async newGallery => {
+  const { data } = await galleryInstance.post("/photoshoots", newGallery);
+console.log(data);
+  return data;
+}; 

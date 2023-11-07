@@ -1,11 +1,14 @@
-import React, { Suspense} from "react";
+import React, { Suspense, useEffect} from "react";
 import { Route, Routes } from "react-router-dom";
 import css from "./App.module.css";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
-import GalleryPage from "./pages/GalleryPage";
+import { useDispatch } from "react-redux";
+import { refreshThunk } from "../redus/authReducer";
 import RestrictedRoute from "./RestrictedRoutes";
-import PrivatedRoute from "./PrivatRoutes";
+// import PrivatedRoute from "./PrivatRoutes";
+import GalleryListPage from "./pages/GalleryListPage";
+
 
 
 const appRouts = [
@@ -28,16 +31,18 @@ const appRouts = [
   },
   {
     path: "/gallery",
-    element: (
-      <PrivatedRoute redirectTo="/login">
-        <GalleryPage />
-      </PrivatedRoute>
-    ),
+    element: 
+        <GalleryListPage />
+    
   },
 ];
 
 function App() {
-  
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshThunk());
+  }, [dispatch]);
   return (
     <div className={css.App}>
       <Suspense fallback="Loading...">
