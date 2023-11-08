@@ -6,16 +6,23 @@ import {
   CardFooter,
   Divider,
   Heading,
+  IconButton,
   Image,
   Stack,
   Text,
 } from "@chakra-ui/react";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectItems } from "../../redus/gallerySelectors";
+import { deleteGalleryItemThunk } from "../../redus/galleryReducer";
+import { HiX } from "react-icons/hi";
 
 const GalleryCard = ({ item }) => {
-  const items = useSelector(selectItems)
+  const dispatch = useDispatch();
+  const items = useSelector(selectItems);
+   const handleDeleteGallery = (contactId) => {
+     dispatch(deleteGalleryItemThunk(contactId));
+   };
   return (
     <Card maxW="300px">
       <CardBody>
@@ -30,6 +37,12 @@ const GalleryCard = ({ item }) => {
           <Text color="blue.600" fontSize="2xl">
             {items.length}
           </Text>
+          <Button
+            type="button"
+            onClick={() => handleDeleteGallery(item.id)}
+          >
+            Delete
+          </Button>
         </Stack>
       </CardBody>
       <Divider />

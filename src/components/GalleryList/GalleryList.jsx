@@ -7,6 +7,7 @@ import {
   selectItemsIsloading,
 } from "../../redus/gallerySelectors";
 import GalleryCard from "../GalleryCard/GalleryCard";
+import { Grid, GridItem, SimpleGrid } from "@chakra-ui/react";
 
 const GalleryList = () => {
   const dispatch = useDispatch();
@@ -31,12 +32,17 @@ const GalleryList = () => {
           <p>{error}</p>
         </div>
       )}
-      <ul>
+      <SimpleGrid columns={3} spacing={10}
+      >
         {items.length > 0 &&
           items.map((item) => {
-            return <GalleryCard key={item.id} item={item} />;
+            return (
+              <GridItem key={item.id}>
+                <GalleryCard item={item} />
+              </GridItem>
+            );
           })}
-      </ul>
+      </SimpleGrid>
     </>
   );
 };
