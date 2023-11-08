@@ -1,30 +1,21 @@
-import { Box, FormControl, FormLabel, Input, Select } from '@chakra-ui/react';
+import { Box, Divider, FormControl, FormLabel, Input, Select, Switch } from '@chakra-ui/react';
 import React from 'react';
 
 const SettingsDetails = () => {
   return (
-    <Box w="100%" bg="white">
+    <Box w="100%" bg="white" mb="10px">
       <form action="">
         <FormControl>
           <FormLabel>
             Gallery name:
-            <Input
-              
-              type="text"
-              placeholder="For example, Lilia 8 days"
-            />
+            <Input type="text" placeholder="For example, Lilia 8 days" />
           </FormLabel>
         </FormControl>
 
         <FormControl mt={4}>
           <FormLabel>
             Date of photoshoot
-            <Input
-             
-              type="date"
-              placeholder="Select Date and Time"
-              size="md"
-            />
+            <Input type="date" placeholder="Select Date and Time" size="md" />
           </FormLabel>
         </FormControl>
 
@@ -38,6 +29,20 @@ const SettingsDetails = () => {
               <option value="option3">1 year</option>
             </Select>
           </FormLabel>
+        </FormControl>
+
+        <FormControl display="flex" alignItems="center">
+          <FormLabel htmlFor="access" mb="0">
+            Allow the client to download photos
+          </FormLabel>
+          <Switch id="access" size="lg" />
+        </FormControl>
+
+        <FormControl display="flex" alignItems="center">
+          <FormLabel htmlFor="access" mb="0">
+            Water mark
+          </FormLabel>
+          <Switch id="access" size="lg" />
         </FormControl>
       </form>
     </Box>
