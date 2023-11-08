@@ -8,6 +8,9 @@ import { refreshThunk } from "../redus/authReducer";
 import RestrictedRoute from "./RestrictedRoutes";
 // import PrivatedRoute from "./PrivatRoutes";
 import GalleryListPage from "./pages/GalleryListPage";
+import Details from "./pages/Details";
+import Navigation from "./Navigation/Navigation";
+import { Container } from "@chakra-ui/react";
 
 
 
@@ -31,9 +34,11 @@ const appRouts = [
   },
   {
     path: "/gallery",
-    element: 
-        <GalleryListPage />
-    
+    element: <GalleryListPage />,
+  },
+  {
+    path: "/details",
+    element: <Details />,
   },
 ];
 
@@ -44,15 +49,16 @@ function App() {
     dispatch(refreshThunk());
   }, [dispatch]);
   return (
-    <div className={css.App}>
+    <Container maxW="1200px">
       <Suspense fallback="Loading...">
+        <Navigation/>
         <Routes>
           {appRouts.map(({ path, element }) => (
             <Route key={path} path={path} element={element} />
           ))}
         </Routes>
       </Suspense>
-    </div>
+    </Container>
   );
 }
 

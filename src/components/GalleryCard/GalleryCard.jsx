@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectItems } from "../../redus/gallerySelectors";
 import { deleteGalleryItemThunk } from "../../redus/galleryReducer";
 import { HiX } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 const GalleryCard = ({ item }) => {
   const dispatch = useDispatch();
@@ -37,17 +38,16 @@ const GalleryCard = ({ item }) => {
           <Text color="blue.600" fontSize="2xl">
             {items.length}
           </Text>
-          <Button
-            type="button"
-            onClick={() => handleDeleteGallery(item.id)}
-          >
+          <Button type="button" onClick={() => handleDeleteGallery(item.id)}>
             Delete
           </Button>
         </Stack>
       </CardBody>
       <Divider />
       <CardFooter justify="center">
-        <Button colorScheme="orange">Go to Gallery</Button>
+        <Button as={Link} to="/details" colorScheme="orange">
+          Go to Gallery
+        </Button>
       </CardFooter>
     </Card>
   );

@@ -84,9 +84,7 @@ const CreateGalleryCard = () => {
           <Button type="button">Cancel</Button>
         </form>
         
-        <Box>
-
-        </Box>
+      
       </Box>
     </>
   );
